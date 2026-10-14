@@ -4,7 +4,7 @@
 
 ## Documentation
 - [README](./README.md): RU hero, quick start, battle test example, JSON-LD
-- [SKILL.md](./skills/pnl-check/SKILL.md): Full skill — 10 indicators, 5 evidence levels, safety rails
+- [SKILL.md](./skills/ds_pnl-check/SKILL.md): Full skill — 10 indicators, 5 evidence levels, safety rails
 - [Battle test](./examples/pnl-discovery-economy-2026-09-14.md): Real run on Discovery economy
 - [CHANGELOG](./CHANGELOG.md): Version history
 - [Templates](./templates/): context_questionnaire, pnl_structure.csv, data_gap_report

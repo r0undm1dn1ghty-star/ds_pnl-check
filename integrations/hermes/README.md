@@ -2,11 +2,11 @@
 
 ## Установка
 
-1. Скопируйте папку `skills/pnl-check/` в свою библиотеку скиллов:
+1. Скопируйте папку `skills/ds_pnl-check/` в свою библиотеку скиллов:
    ```bash
-   cp -r skills/pnl-check/ ~/skills/pnl-check/
+   cp -r skills/ds_pnl-check/ ~/skills/ds_pnl-check/
    ```
-2. Hermes (и большинство агентных рантаймов) читает `SKILL.md` как инструкцию. Если рантайм использует YAML-frontmatter — он уже есть в `skills/pnl-check/SKILL.md`.
+2. Hermes (и большинство агентных рантаймов) читает `SKILL.md` как инструкцию. Если рантайм использует YAML-frontmatter — он уже есть в `skills/ds_pnl-check/SKILL.md`.
 
 ## Использование
 
@@ -27,4 +27,4 @@ hermes -z "Запусти P&L Check. Опросник в templates/context_quest
 
 ## Примечание
 
-Любой агентный рантайм, умеющий читать Markdown-инструкции (Claude Code, OpenCode, Cursor, etc.), подключается тем же способом: скопировать `skills/pnl-check/` и сослаться на `SKILL.md`.
+Любой агентный рантайм, умеющий читать Markdown-инструкции (Claude Code, OpenCode, Cursor, etc.), подключается тем же способом: скопировать `skills/ds_pnl-check/` и сослаться на `SKILL.md`.

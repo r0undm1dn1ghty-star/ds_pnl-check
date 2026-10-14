@@ -3,14 +3,14 @@
 ## Структура
 
 ```
-pnl-check/
+ds_pnl-check/
 ├── README.md                  ← главный документ (русский)
 ├── LICENSE                    ← Apache 2.0
 ├── NOTICE.md                  ← условия работы с источниками
 ├── AGENTS.md                  ← инструкция для агента
 ├── SAFETY_RAILS.md            ← стоп-правила
 ├── DATA_EVIDENCE_STANDARD.md  ← стандарт доказательств
-├── skills/pnl-check/          ← переносимый skill
+├── skills/ds_pnl-check/          ← переносимый skill
 ├── templates/                 ← опросник, структура P&L, шаблоны
 ├── integrations/              ← адаптеры (Claude Code, MCP, ChatGPT)
 ├── docs/ru/                   ← документация на русском

@@ -1,5 +1,5 @@
 ---
-name: pnl-check
+name: ds_pnl-check
 description: "Проверка цифр для управленческого решения: факты→сверка→бриф."
 version: 0.3.0
 author: Victor Zaitsev

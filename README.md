@@ -1,4 +1,6 @@
-# P&L Check
+# ds_pnl-check
+
+**P&L Check**
 
 <div align="center">
 <img src="assets/banner.svg" alt="Discovery System — P&L Check — факты, сверка, бриф" width="100%">
@@ -144,7 +146,18 @@ Open-source протокол для агентов, собственников �
 
 Не подходит для: банков, страховщиков, чистых холдингов, регулируемой инфраструктуры — здесь корректный результат: список пробелов и вопросы профильному специалисту.
 
-## Быстрый старт (20 минут)
+## Установка и использование
+
+Скилл живёт под именем **`ds_pnl-check`** — префикс `ds_` делает имя уникальным среди чужих скиллов, в чате достаточно сказать: «запусти ds_pnl-check для …».
+
+```bash
+git clone https://github.com/r0undm1dn1ghty-star/pnl-check.git
+mkdir -p ~/.claude/skills/ds_pnl-check
+cp pnl-check/CLAUDE.md ~/.claude/skills/ds_pnl-check/SKILL.md
+cp -r pnl-check/skill/* ~/.claude/skills/ds_pnl-check/
+```
+
+Все скиллы Discovery System — с префиксом **`ds_`**: `ds_pnl-check`, `ds_spiral-maturity`, `ds_geo-audit`, `ds_market-evidence`, `ds_warm-lead-parser`, `ds_content-radar`. Комплект и связка — [discovery-system.ru](https://discovery-system.ru).## Быстрый старт (20 минут)
 
 1. Выберите среду: [Claude Code](integrations/claude-code/README.md), совместимый агентный skill или [ChatGPT](integrations/chatgpt/README.md).
 2. Заполните [опросник компании](templates/context_questionnaire.md) и приложите [структуру P&L](templates/pnl_structure.csv).
@@ -191,7 +204,7 @@ P&L Check — это фильтр для финансовых решений. В
 
 | Задача | Файл |
 |---|---|
-| Запустить переносимый skill в агентной среде | [`skills/pnl-check/SKILL.md`](skills/pnl-check/SKILL.md) |
+| Запустить переносимый skill в агентной среде | [`skills/ds_pnl-check/SKILL.md`](skills/ds_pnl-check/SKILL.md) |
 | Работать с репозиторием в Claude Code | [`CLAUDE.md`](CLAUDE.md) и [`integrations/claude-code/`](integrations/claude-code/) |
 | Подключить локальные проверки через MCP | [`integrations/mcp/README.md`](integrations/mcp/README.md) |
 | Настроить Custom GPT в ChatGPT | [`integrations/chatgpt/README.md`](integrations/chatgpt/README.md) |
@@ -203,7 +216,7 @@ P&L Check — это фильтр для финансовых решений. В
 | Путь | Содержание |
 |---|---|
 | [`AGENTS.md`](AGENTS.md) | Главная инструкция для любого агента. Русский текст — основной. |
-| [`skills/pnl-check/`](skills/pnl-check/) | Переносимый skill с процедурой проверки. |
+| [`skills/ds_pnl-check/`](skills/ds_pnl-check/) | Переносимый skill с процедурой проверки. |
 | [`templates/`](templates/) | Опросник, структура P&L и шаблоны результатов. |
 | [`integrations/`](integrations/) | Адаптеры для Claude Code, MCP и ChatGPT. |
 | [`docs/ru/`](docs/ru/) | Основная документация на русском языке. |
@@ -231,7 +244,7 @@ P&L Check — это фильтр для финансовых решений. В
 
 The workflow is: **collect facts → reconcile profit and cash → prepare a decision brief**. It does not replace a CFO, accountant, tax adviser, lawyer, credit committee, or insolvency practitioner. It never guesses missing data or recommends layoffs, business closure, tax avoidance, hidden liabilities, or debt restructuring.
 
-Russian is the authoritative operating language. See [English documentation](docs/en/README.md) for implementation guidance and [the portable skill](skills/pnl-check/SKILL.md) for agent integration.
+Russian is the authoritative operating language. See [English documentation](docs/en/README.md) for implementation guidance and [the portable skill](skills/ds_pnl-check/SKILL.md) for agent integration.
 
 <!-- GEO: JSON-LD structured data for AI discoverability -->
 <!-- GEO: JSON-LD -->

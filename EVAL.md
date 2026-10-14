@@ -39,7 +39,7 @@
 ## Проверка
 
 ```bash
-git clone https://github.com/r0undm1dn1ghty-star/pnl-check && cd pnl-check
+git clone https://github.com/r0undm1dn1ghty-star/pnl-check && cd ds_pnl-check
 python integrations/kit/skillkit.py --json --input \
   '{"lines":{"net_profit":94.8},"cash":{"ocf":218.8},"standard":"IFRS","text":"падение из-за LTI и разового обесценения"}'
 # -> ловушки: разов, lti, обесцен; confidence high

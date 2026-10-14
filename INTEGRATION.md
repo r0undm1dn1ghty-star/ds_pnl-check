@@ -97,7 +97,7 @@ result = skillkit.run({"text": "..."})     # чистый dict
 ```json
 {
   "mcpServers": {
-    "pnl-check": { "command": "python", "args": ["/абсолютный/путь/integrations/mcp_server.py"] }
+    "ds_pnl-check": { "command": "python", "args": ["/абсолютный/путь/integrations/mcp_server.py"] }
   }
 }
 ```

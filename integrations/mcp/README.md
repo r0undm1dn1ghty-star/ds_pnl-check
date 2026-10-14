@@ -24,7 +24,7 @@ python mcp_server.py
 ```json
 {
   "mcpServers": {
-    "pnl-check": {
+    "ds_pnl-check": {
       "command": "python",
       "args": ["путь/до/integrations/mcp/mcp_server.py"]
     }
