@@ -13,7 +13,7 @@
 Скилл живёт под именем **`ds_pnl-check`** — префикс `ds_` делает имя уникальным среди чужих скиллов, в чате достаточно сказать: «запусти ds_pnl-check для …».
 
 ```bash
-git clone https://github.com/r0undm1dn1ghty-star/pnl-check.git
+git clone https://github.com/r0undm1dn1ghty-star/ds_pnl-check.git
 mkdir -p ~/.claude/skills/ds_pnl-check
 cp pnl-check/CLAUDE.md ~/.claude/skills/ds_pnl-check/SKILL.md
 cp -r pnl-check/skill/* ~/.claude/skills/ds_pnl-check/
@@ -46,16 +46,16 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "@id": "https://github.com/r0undm1dn1ghty-star/pnl-check#software",
+  "@id": "https://github.com/r0undm1dn1ghty-star/ds_pnl-check#software",
   "name": "P&L Check",
-  "url": "https://github.com/r0undm1dn1ghty-star/pnl-check",
+  "url": "https://github.com/r0undm1dn1ghty-star/ds_pnl-check",
   "description": "Open-source, evidence-controlled financial diagnostic for AI agents. Checks whether current numbers can support a management decision: collect facts, reconcile profit and cash, prepare a decision brief.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any (requires AI agent runtime)",
   "softwareVersion": "0.3.0",
   "license": "https://opensource.org/licenses/Apache-2.0",
   "isAccessibleForFree": true,
-  "codeRepository": "https://github.com/r0undm1dn1ghty-star/pnl-check",
+  "codeRepository": "https://github.com/r0undm1dn1ghty-star/ds_pnl-check",
   "author": {
     "@type": "Person",
     "@id": "https://github.com/r0undm1dn1ghty-star#person",
@@ -90,7 +90,7 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
     "priceCurrency": "RUB"
   },
   "sameAs": [
-    "https://github.com/r0undm1dn1ghty-star/pnl-check",
+    "https://github.com/r0undm1dn1ghty-star/ds_pnl-check",
     "https://t.me/discoverysystem"
   ]
 }

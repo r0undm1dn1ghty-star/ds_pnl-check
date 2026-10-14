@@ -24,7 +24,7 @@
 ## Как воспроизвести
 
 ```bash
-git clone https://github.com/r0undm1dn1ghty-star/pnl-check
+git clone https://github.com/r0undm1dn1ghty-star/ds_pnl-check
 cd ds_pnl-check
 echo '{"lines":{"net_profit":94.8},"cash":{"ocf":218.8},"text":"падение из-за LTI и разового обесценения","standard":"IFRS"}' \
   | python integrations/kit/skillkit.py --json

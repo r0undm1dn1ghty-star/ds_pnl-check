@@ -10,6 +10,6 @@
 - [Templates](./templates/): context_questionnaire, pnl_structure.csv, data_gap_report
 
 ## Links
-- [GitHub Repository](https://github.com/r0undm1dn1ghty-star/pnl-check)
+- [GitHub Repository](https://github.com/r0undm1dn1ghty-star/ds_pnl-check)
 - [Discovery System](https://discovery-system.ru)
 - [Telegram](https://t.me/discoverysystem)
