@@ -1,27 +1,9 @@
 # P&L Check
 
-<!-- GEO: JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "P&L Check",
-  "description": "Open-source protocol: facts → reconciliation → decision brief. No guessing, no template advice.",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "softwareVersion": "0.3.0",
-  "license": "https://opensource.org/licenses/Apache-2.0",
-  "isAccessibleForFree": true,
-  "codeRepository": "https://github.com/r0undm1dn1ghty-star/pnl-check",
-  "author": {
-    "@type": "Person",
-    "name": "Viktor Zaitsev",
-    "url": "https://github.com/r0undm1dn1ghty-star",
-    "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]
-  },
-  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
-}
-</script>
+<div align="center">
+<img src="assets/banner.svg" alt="Discovery System — P&L Check — факты, сверка, бриф" width="100%">
+</div>
+
 <!-- /GEO -->
 
 ## English summary
@@ -250,3 +232,27 @@ P&L Check — это фильтр для финансовых решений. В
 The workflow is: **collect facts → reconcile profit and cash → prepare a decision brief**. It does not replace a CFO, accountant, tax adviser, lawyer, credit committee, or insolvency practitioner. It never guesses missing data or recommends layoffs, business closure, tax avoidance, hidden liabilities, or debt restructuring.
 
 Russian is the authoritative operating language. See [English documentation](docs/en/README.md) for implementation guidance and [the portable skill](skills/pnl-check/SKILL.md) for agent integration.
+
+<!-- GEO: JSON-LD structured data for AI discoverability -->
+<!-- GEO: JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "P&L Check",
+  "description": "Open-source protocol: facts → reconciliation → decision brief. No guessing, no template advice.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "softwareVersion": "0.3.0",
+  "license": "https://opensource.org/licenses/Apache-2.0",
+  "isAccessibleForFree": true,
+  "codeRepository": "https://github.com/r0undm1dn1ghty-star/pnl-check",
+  "author": {
+    "@type": "Person",
+    "name": "Viktor Zaitsev",
+    "url": "https://github.com/r0undm1dn1ghty-star",
+    "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]
+  },
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB"}
+}
+</script>
