@@ -1,45 +1,142 @@
-# ds_pnl-check
-
-**P&L Check**
+# P&L Check
 
 <div align="center">
-<img src="assets/banner.svg" alt="Discovery System — P&L Check — факты, сверка, бриф" width="100%">
+<img src="assets/banner.svg" alt="P&L Check: profit against cash, three steps to a decision brief" width="100%">
 </div>
 
-<!-- /GEO -->
+## English
 
-## Установка и использование
+P&L Check is an open source protocol that checks whether your current numbers hold a management decision. You collect facts, you reconcile profit with cash, you prepare a decision brief. It runs as a portable skill in Claude Code, Hermes, ChatGPT, or any MCP-compatible agent runtime. Apache 2.0.
 
-Скилл живёт под именем **`ds_pnl-check`** — префикс `ds_` делает имя уникальным среди чужих скиллов, в чате достаточно сказать: «запусти ds_pnl-check для …».
+The workflow has three steps. You lock the facts (legal entity, period, sources, scope, gaps) and you get a data card. You match P&L against balances, cash flow, receivables, payables, debt, and one-off items, and you get a gap list with explained and unexplained items. You separate fact from calculation, hypothesis, and guess, and you get a brief that shows where the data holds and where it runs out.
+
+### Install
+
+The skill lives in this repo under `skills/pnl-check/`. You copy that folder into your agent skills directory and you point the agent at `SKILL.md`.
 
 ```bash
 git clone https://github.com/r0undm1dn1ghty-star/ds_pnl-check.git
 mkdir -p ~/.claude/skills/ds_pnl-check
-cp pnl-check/CLAUDE.md ~/.claude/skills/ds_pnl-check/SKILL.md
-cp -r pnl-check/skill/* ~/.claude/skills/ds_pnl-check/
+cp -r ds_pnl-check/skills/pnl-check/* ~/.claude/skills/ds_pnl-check/
 ```
 
-Все скиллы Discovery System — с префиксом **`ds_`**: `ds_pnl-check`, `ds_spiral-maturity`, `ds_geo-audit`, `ds_market-evidence`, `ds_warm-lead-parser`, `ds_content-radar`. Комплект и связка — [discovery-system.ru](https://discovery-system.ru).## Быстрый старт (20 минут)
+All Discovery System skills ship with the `ds_` prefix: `ds_pnl-check`, `ds_spiral-maturity`, `ds_geo-audit`, `ds_market-evidence`, `ds_warm-lead-parser`, `ds_content-radar`. The full set lives at [discovery-system.ru](https://discovery-system.ru).
 
-1. Выберите среду: [Claude Code](integrations/claude-code/README.md), совместимый агентный skill или [ChatGPT](integrations/chatgpt/README.md).
-2. Заполните [опросник компании](templates/context_questionnaire.md) и приложите [структуру P&L](templates/pnl_structure.csv).
-3. Передайте исходные документы и выгрузки, а не только итоговые показатели.
-4. Попросите агента начать с **Карточки данных**. Если она неполная, правильный результат — [список недостающих данных](templates/data_gap_report.md), а не выводы.
-5. Проверьте результат по [стоп-правилам](SAFETY_RAILS.md) и передайте налоговые, юридические, трудовые и кредитные вопросы специалисту.
+### Quick start (20 minutes)
 
-**Результат:** Карточка данных → Отчёт о расхождениях → Бриф для решения. Без готовых советов и без ложной уверенности.
+1. Pick a runtime: [Claude Code](integrations/claude-code/README.md), a compatible agent skill, or [ChatGPT](integrations/chatgpt/README.md).
+2. Fill in the [company questionnaire](templates/context_questionnaire.md) and attach the [P&L structure](templates/pnl_structure.csv).
+3. Hand over source documents and exports. Totals alone never confirm anything.
+4. Tell the agent to start with the data card. When the card shows gaps, the correct output is the [missing data list](templates/data_gap_report.md). No conclusions yet.
+5. Check the result against the [safety rails](SAFETY_RAILS.md). Tax, labor, legal, and credit questions go to a specialist.
+
+You end with three artifacts: a data card, a gap report, and a decision brief. No ready-made advice inside.
+
+### What P&L Check does not do
+
+It never replaces a CFO, an accountant, a tax adviser, a lawyer, or a credit committee. It never fills a gap with a guess. It never advises layoffs, closures, payment delays, splits, or hidden liabilities. It treats 100 public cards as a corpus of failure modes. It states every finding with its source.
+
+### Battle-tested on real market data
+
+The skill ran against real company reports. Full breakdown with numbers, coverage, and reproducible commands: [EVAL.md](EVAL.md). Benchmark against the naive method: [BENCHMARK.md](BENCHMARK.md).
+
+Two facts set the frame. Gartner forecasts that over 40% of agentic AI projects will be canceled by the end of 2027 (escalating costs, unclear business value, inadequate risk controls; press release, Sydney, 25 June 2025, analyst Anushree Verma; [source](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)). And my own run on X5 FY2025 showed profit down 13.9% against revenue up 18.8% with operating cash flow up 15%: without reconciliation the verdict reads "sell", with reconciliation it reads "take apart the one-off items" (CHANGELOG v0.4.0, 2026-09-20).
 
 ---
 
-## What is P&L Check?
+## Russian
 
-P&L Check is an open-source, evidence-controlled financial diagnostic protocol for AI agents and management accountants. It helps a company determine whether the available numbers can support a management decision — without guessing missing data, without giving financial advice, and without replacing a CFO.
+P&L Check проверяет, держат ли текущие цифры управленческое решение. Ты собираешь факты, сверяешь прибыль с деньгами и готовишь бриф. Протокол открытый. Он служит агентам, собственникам и финансовым руководителям российских компаний.
 
-The workflow has three steps: **collect facts → reconcile profit and cash → prepare a decision brief**. Each step produces a verifiable artifact: a data card, a reconciliation report, and a decision brief with explicit confidence levels.
+### Установка
 
-According to Gartner, more than 40% of AI projects will be cancelled by 2027. The root cause is almost always the same: decisions were made on belief, not on numbers. P&L Check is a filter for financial decisions — it answers "which numbers can I actually rely on?" before any recommendation.
+Скилл лежит в репозитории в папке `skills/pnl-check/`. Ты копируешь её в каталог скиллов агента и показываешь агенту файл `SKILL.md`.
+
+```bash
+git clone https://github.com/r0undm1dn1ghty-star/ds_pnl-check.git
+mkdir -p ~/.claude/skills/ds_pnl-check
+cp -r ds_pnl-check/skills/pnl-check/* ~/.claude/skills/ds_pnl-check/
+```
+
+В чате достаточно сказать: «запусти ds_pnl-check для ...».
+
+### Быстрый старт (20 минут)
+
+1. Ты выбираешь среду: [Claude Code](integrations/claude-code/README.md), совместимый агентный скилл или [ChatGPT](integrations/chatgpt/README.md).
+2. Ты заполняешь [опросник компании](templates/context_questionnaire.md) и прикладываешь [структуру P&L](templates/pnl_structure.csv).
+3. Ты передаёшь исходные документы и выгрузки. Одних итоговых показателей мало.
+4. Ты просишь агента начать с карточки данных. Карточка показала пробелы, правильный результат в этот момент [список недостающих данных](templates/data_gap_report.md). Выводов пока нет.
+5. Ты проверяешь результат по [стоп-правилам](SAFETY_RAILS.md). Налоговые, юридические, трудовые и банковские вопросы отдаёшь специалисту.
+
+Ты получаешь три артефакта: карточка данных, отчёт о расхождениях, бриф для решения. Готовых советов внутри нет.
+
+### Чего P&L Check не делает
+
+| Граница | Почему |
+|---|---|
+| CFO, бухгалтер, налоговый консультант, юрист и банковский комитет решают сами. Агент их подменять не вправе. | Ответственное решение принимают люди с полномочиями. |
+| Налоговый режим, ставку, условия договора, структуру займов и недостающие строки агент берёт только из документов. | Догадка фактом не становится, даже когда текст звучит гладко. |
+| Решения про людей и обязательства (увольнять, закрывать, задерживать платежи, дробить, скрывать) остаются за человеком со специалистом. | Это опасные ходы: задевают команду, договоры и закон. |
+| 100 публичных карточек служат разбором ошибок. Нормой отрасли они не считаются. | Периметр, стандарт отчётности и модель у компаний разные. Сначала нужна сопоставимость. |
+
+### Как это работает
+
+| Шаг | Что происходит | Результат | Время |
+|---|---|---|---|
+| 1. Собрать факты | Ты фиксируешь юрлицо, период, источники, периметр, единицы измерения и пробелы в данных. | Карточка данных и список недостающих документов. | Около 5 минут |
+| 2. Сверить прибыль и деньги | Ты сопоставляешь P&L, остатки и движение денег, дебиторскую задолженность, обязательства перед поставщиками, займы и разовые статьи. | Расхождения с объяснением и расхождения без объяснения. | Около 10 минут |
+| 3. Подготовить решение | Ты отделяешь факт от расчёта, гипотезы и догадки. Ты формулируешь вопросы и проверки для команды. | Бриф показывает, где данных хватает, а где остаются пробелы. | Около 5 минут |
+
+Сценарии ты строишь только после этой проверки и только с явными вводными. Они показывают чувствительность, судьбу компании не предсказывают.
+
+### Проверка на реальных рыночных данных
+
+Скилл прогнан на реальных данных рынка. Полный разбор с цифрами, покрытием и воспроизводимыми командами: [EVAL.md](EVAL.md). Бенчмарк против наивного метода: [BENCHMARK.md](BENCHMARK.md).
+
+Рамку задают два факта. Gartner прогнозирует отмену более 40% агентных ИИ-проектов к концу 2027 года (рост затрат, неясная ценность, слабый контроль рисков; пресс-релиз, Сидней, 25 июня 2025, аналитик Anushree Verma; [источник](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)). Мой прогон X5 за FY2025 показал прибыль минус 13,9% при выручке плюс 18,8% и операционном потоке плюс 15%: без сверки вердикт читается «продавать», со сверкой «разобрать разовые статьи» (CHANGELOG v0.4.0, 2026-09-20).
+
+### Кому это нужно
+
+- Собственник B2B-компании. Ты не уверен, что цифры из таблицы держат важное решение.
+- Финансовый руководитель. P&L, выписки, 1С и CRM противоречат друг другу. Тебе нужно видеть, где факт, а где догадка.
+- Консультант или аудитор. Тебе нужен воспроизводимый протокол вместо мнения «мне кажется».
+
+Банкам, страховщикам, чистым холдингам и регулируемой инфраструктуре скилл отвечает списком пробелов и вопросами профильному специалисту.
+
+### Для агентов и разработчиков
+
+| Задача | Файл |
+|---|---|
+| Запустить переносимый скилл в агентной среде | [`skills/pnl-check/SKILL.md`](skills/pnl-check/SKILL.md) |
+| Работать с репозиторием в Claude Code | [`CLAUDE.md`](CLAUDE.md) и [`integrations/claude-code/`](integrations/claude-code/) |
+| Подключить локальные проверки через MCP | [`integrations/mcp/README.md`](integrations/mcp/README.md) |
+| Настроить Custom GPT в ChatGPT | [`integrations/chatgpt/README.md`](integrations/chatgpt/README.md) |
+| Соблюдать методологию и стоп-правила | [`AGENTS.md`](AGENTS.md) и [`DATA_EVIDENCE_STANDARD.md`](DATA_EVIDENCE_STANDARD.md) |
+| Понять продуктовую границу | [`docs/ru/COMMERCIAL_PRODUCT_ARCHITECTURE.md`](docs/ru/COMMERCIAL_PRODUCT_ARCHITECTURE.md) |
+
+### Структура репозитория
+
+| Путь | Содержание |
+|---|---|
+| [`AGENTS.md`](AGENTS.md) | Главная инструкция для любого агента. Русский текст основной. |
+| [`skills/pnl-check/`](skills/pnl-check/) | Переносимый скилл с процедурой проверки. |
+| [`templates/`](templates/) | Опросник, структура P&L и шаблоны результатов. |
+| [`integrations/`](integrations/) | Адаптеры для Claude Code, MCP и ChatGPT. |
+| [`docs/ru/`](docs/ru/) | Документация на русском. |
+| [`docs/en/`](docs/en/) | Английское изложение. |
+| [`tests/`](tests/) | Воспроизводимые проверки структуры. |
+
+## Авторство
+
+Инструмент создал и поддерживает [Виктор Зайцев](https://vospri9tielandingpage.vercel.app/), продуктовый стратег и консультант из Санкт-Петербурга. Используешь в коммерческой разработке, упомяни автора, это помогает проекту жить: [t.me/discoverysystem](https://t.me/discoverysystem)
+
+## Лицензия
+
+Код и материалы распространяются по [Apache License 2.0](LICENSE). Условия работы с источниками и границы применения смотри в [NOTICE.md](NOTICE.md).
 
 ---
+
+Держат ли твои цифры то решение, которое ты готовишь: [t.me/discoverysystem](https://t.me/discoverysystem) · [discovery-system.ru](https://discovery-system.ru)
 
 <!-- GEO: JSON-LD structured data for AI discoverability -->
 <script type="application/ld+json">
@@ -49,10 +146,10 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
   "@id": "https://github.com/r0undm1dn1ghty-star/ds_pnl-check#software",
   "name": "P&L Check",
   "url": "https://github.com/r0undm1dn1ghty-star/ds_pnl-check",
-  "description": "Open-source, evidence-controlled financial diagnostic for AI agents. Checks whether current numbers can support a management decision: collect facts, reconcile profit and cash, prepare a decision brief.",
+  "description": "Open-source financial diagnostic for AI agents. Checks whether current numbers can support a management decision: collect facts, reconcile profit and cash, prepare a decision brief.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any (requires AI agent runtime)",
-  "softwareVersion": "0.3.0",
+  "softwareVersion": "0.4.0",
   "license": "https://opensource.org/licenses/Apache-2.0",
   "isAccessibleForFree": true,
   "codeRepository": "https://github.com/r0undm1dn1ghty-star/ds_pnl-check",
@@ -79,7 +176,7 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
   },
   "featureList": [
     "Three-step protocol: collect facts, reconcile profit and cash, prepare decision brief",
-    "Evidence-controlled: every finding links to a source, never guesses missing data",
+    "Every finding links to a source, never guesses missing data",
     "Safety rails: no financial advice, no layoffs, no tax avoidance recommendations",
     "Portable skill format for Claude Code, Hermes, ChatGPT, and MCP",
     "Structural validator with reproducible tests"
@@ -104,15 +201,13 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
       "@type": "Question",
       "name": "What is P&L Check?",
       "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "P&L Check is an open-source, evidence-controlled financial diagnostic for AI agents. It checks whether the available numbers can support a management decision by collecting facts, reconciling profit and cash, and preparing a decision brief. It does not replace a CFO, accountant, or tax adviser."
+        "text": "P&L Check is an open-source financial diagnostic for AI agents. It checks whether the available numbers can support a management decision by collecting facts, reconciling profit and cash, and preparing a decision brief. It does not replace a CFO, accountant, or tax adviser."
       }
     },
     {
       "@type": "Question",
       "name": "How does P&L Check work?",
       "acceptedAnswer": {
-        "@type": "Answer",
         "text": "The workflow has three steps: collect facts (legal entity, period, sources, gaps), reconcile profit and cash (P&L, balances, receivables, payables, debt), and prepare a decision brief separating fact from assumption. Each step produces a verifiable artifact."
       }
     },
@@ -120,7 +215,6 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
       "@type": "Question",
       "name": "Is P&L Check free?",
       "acceptedAnswer": {
-        "@type": "Answer",
         "text": "Yes. P&L Check is open-source under Apache License 2.0 and free to use. It runs as a portable skill in Claude Code, Hermes, ChatGPT, or any MCP-compatible agent runtime."
       }
     },
@@ -128,7 +222,6 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
       "@type": "Question",
       "name": "What does P&L Check NOT do?",
       "acceptedAnswer": {
-        "@type": "Answer",
         "text": "P&L Check does not replace a CFO, accountant, tax consultant, or lawyer. It does not guess missing data, does not recommend layoffs or business closure, and does not treat 100 public cards as an industry benchmark."
       }
     }
@@ -136,105 +229,3 @@ According to Gartner, more than 40% of AI projects will be cancelled by 2027. Th
 }
 </script>
 <!-- /GEO -->
-
-<p align="center">
-  <img src="assets/discovery-eye.svg" width="480" alt="Discovery System — evidence-first открытые"/>
-</p>
-
-**Проверка, можно ли принимать управленческое решение на текущих цифрах.**
-Open-source протокол для агентов, собственников и финансовых руководителей российских компаний.
-
-[![Лицензия: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-
-<p align="center">
-  <img src="https://img.shields.io/badge/evidence--first-8b5cf6.svg" alt="evidence-first"/>
-  <img src="https://img.shields.io/badge/status-v0.3.0-yellow.svg" alt="v0.3.0"/>
-</p>
-
-> **P&L Check не ищёт «лишние расходы» по шаблону.** Сначала он проверяет, какие цифры подтверждены, где прибыль расходится с деньгами и чего не хватает для безопасного решения.
-
-## Проверка на реальных рыночных данных
-
-Скилл прогнан на реальных данных рынка — не на синтетике. Полный разбор с
-цифрами, покрытием и воспроизводимыми командами: **[EVAL.md](EVAL.md)**.
-
-Бенчмарк против наивного метода на реальных данных: **[BENCHMARK.md](BENCHMARK.md)**.
-
-## Чего P&L Check не делает
-
-| Не делает | Почему |
-|---|---|
-| Не заменяет CFO, бухгалтера, налогового консультанта, юриста или кредитный комитет. | У агента нет полномочий и права подменять ответственное решение. |
-| Не угадывает налоговый режим, ставку, условия договора, структуру долга или недостающие строки. | Догадка не становится фактом из-за красивого текста. |
-| Не советует увольнять людей, закрывать бизнес, задерживать платежи, дробить компанию или скрывать обязательства. | Это опасные управленческие, трудовые, юридические и налоговые решения. |
-| Не считает 100 публичных карточек «нормой по отрасли». | У компаний разный периметр, стандарт отчётности и финансовая модель; сначала нужна сопоставимость. |
-
-## Как это работает
-
-| Шаг | Что происходит | Результат | Время |
-|---|---|---|---|
-| **1. Собрать факты** | Агент фиксирует юридическое лицо, период, источники, периметр, единицы измерения и пробелы в данных. | **Карточка данных** и список недостающих документов. | ~5 мин |
-| **2. Сверить прибыль и деньги** | Агент сопоставляет P&L, остатки и движение денег, дебиторку, кредиторку, долг и существенные разовые статьи. | Объяснённые и необъяснённые расхождения. | ~10 мин |
-| **3. Подготовить решение** | Агент отделяет факт от расчёта, гипотезы и догадки; формулирует вопросы и безопасные проверки для команды. | **Бриф для решения** без ложной уверенности. | ~5 мин |
-
-Сценарии допустимы только после этой проверки и только с явно указанными вводными. Они показывают чувствительность, а не прогнозируют судьбу компании.
-
-## Авторство
-
-Инструмент создан и поддерживается [Виктором Зайцевым](https://vospri9tielandingpage.vercel.app/) — продуктовым стратегом и консультантом из Санкт-Петербурга. Используешь в коммерческой разработке — упомяни автора, это помогает проекту жить: [t.me/discoverysystem](https://t.me/discoverysystem)
-
----
-
-## Лицензия и границы применения
-
-Код и методические материалы распространяются по [Apache License 2.0](LICENSE). См. [NOTICE.md](NOTICE.md) для условий работы с источниками и ограничений применения.
-
----
-
-## English summary
-
-P&L Check — open-source protocol for checking whether you can make a management decision on current numbers. Facts → reconciliation of profit and cash → decision brief. No guessing, no template advice. 10 indicators, evidence levels (Confirmed/Claimed/Calculated/Hypothesis/Guess), safety rails against hallucination. Battle-tested on real company economics.
-
-Можно ли принимать решение на текущих цифрах — или данные врут?
-
-> P&L Check — open-source протокол для AI-агентов и финансовых руководителей. Проверяет, можно ли принимать управленческое решение на текущих цифрах: факты → сверка прибыли и денег → бриф для решения. Apache 2.0, v0.3.0.
-
-## Кому это нужно
-
-- **Собственник B2B-компании** — не уверен, что цифры из таблицы можно доверять перед важным решением.
-- **Финансовый руководитель** — P&L, выписки, 1С и CRM противоречат друг другу, нужно понять где факт, а где догадка.
-- **Консультант или аудитор** — нужен воспроизводимый протокол, а не мнение «мне кажется».
-
-Не подходит для: банков, страховщиков, чистых холдингов, регулируемой инфраструктуры — здесь корректный результат: список пробелов и вопросы профильному специалисту.
-
-## Зачем это сделано
-
-Рынок ИИ-агентов растёт, а проекты закрываются: по Gartner более 40% ИИ-проектов будут отменены к 2027 году. Причина почти всегда одна — решение принимали на вере, а не на цифрах. Технологий много, готовых решений мало. Разрыв между ними — это и есть возможности, но чтобы их увидеть, нужен фильтр, а не очередное мнение.
-
-P&L Check — это фильтр для финансовых решений. Владельцу B2B-компании нужен не совет «поднимите цены», а ответ на вопрос: «какие цифры я вообще могу сейчас утверждать?» Инструмент даёт этот ответ без угадывания и без страха прогореть.
-
-## Для агентов и разработчиков
-
-| Задача | Файл |
-|---|---|
-| Запустить переносимый skill в агентной среде | [`skills/ds_pnl-check/SKILL.md`](skills/ds_pnl-check/SKILL.md) |
-| Работать с репозиторием в Claude Code | [`CLAUDE.md`](CLAUDE.md) и [`integrations/claude-code/`](integrations/claude-code/) |
-| Подключить локальные проверки через MCP | [`integrations/mcp/README.md`](integrations/mcp/README.md) |
-| Настроить Custom GPT в ChatGPT | [`integrations/chatgpt/README.md`](integrations/chatgpt/README.md) |
-| Соблюдать методологию и стоп-правила | [`AGENTS.md`](AGENTS.md) и [`DATA_EVIDENCE_STANDARD.md`](DATA_EVIDENCE_STANDARD.md) |
-| Понять продуктовую границу | [`docs/ru/COMMERCIAL_PRODUCT_ARCHITECTURE.md`](docs/ru/COMMERCIAL_PRODUCT_ARCHITECTURE.md) |
-
-## Структура репозитория
-
-| Путь | Содержание |
-|---|---|
-| [`AGENTS.md`](AGENTS.md) | Главная инструкция для любого агента. Русский текст — основной. |
-| [`skills/ds_pnl-check/`](skills/ds_pnl-check/) | Переносимый skill с процедурой проверки. |
-| [`templates/`](templates/) | Опросник, структура P&L и шаблоны результатов. |
-| [`integrations/`](integrations/) | Адаптеры для Claude Code, MCP и ChatGPT. |
-| [`docs/ru/`](docs/ru/) | Основная документация на русском языке. |
-| [`docs/en/`](docs/en/) | Английское изложение для международных разработчиков и партнёров. |
-| [`tests/`](tests/) | Воспроизводимые проверки структуры. |
-
-**Проверить свои цифры →** [t.me/discoverysystem](https://t.me/discoverysystem) · [discovery-system.ru](https://discovery-system.ru)
-
